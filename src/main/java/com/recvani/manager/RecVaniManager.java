@@ -1,5 +1,6 @@
 package com.recvani.manager;
 
+import com.recvani.requests.BaseRequest;
 import org.json.simple.JSONArray;
 import com.recvani.client.RvClient;
 import com.recvani.requests.RecRequest;
@@ -42,5 +43,16 @@ public class RecVaniManager {
             System.err.println("Got Exception in RecVani Client " +uid + " " + ex.getMessage());
         }
         return  result;
+    }
+
+    public boolean sendRequest(BaseRequest request){
+        try {
+            rvClient.send(request);
+        }
+        catch (Exception ex) {
+            System.err.println("Got Exception in RecVani Client " +  ex.getMessage());
+            return  false;
+        }
+        return  true;
     }
 }

@@ -38,9 +38,9 @@ public class RvClient {
         this.uri = uri;
         httpClient = HttpClients.createDefault();
         RequestConfig config = RequestConfig.custom()
-                .setConnectTimeout(5 * 1000)
-                .setConnectionRequestTimeout(5 * 1000)
-                .setSocketTimeout(5 * 1000).build();
+                .setConnectTimeout(6 * 1000)
+                .setConnectionRequestTimeout(6 * 1000)
+                .setSocketTimeout(6 * 1000).build();
         httpClient = HttpClients.custom().create().setDefaultRequestConfig(config).build();
 
         id = 0;
