@@ -1,6 +1,7 @@
 package com.recvani.requests;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import java.util.List;
 
@@ -27,8 +28,9 @@ public class RecRequest implements BaseRequest {
 
     public JSONArray getParams() {
         JSONArray jarray = new JSONArray();
-        jarray.add(uid);
-        jarray.add(count);
+        JSONObject jobject = new JSONObject();
+        jobject.put("uid", uid);
+        jobject.put("count", count);
         JSONArray jsonArray = new JSONArray();
         for (List<String> tlist : tags) {
             JSONArray jlist = new JSONArray();
@@ -36,8 +38,9 @@ public class RecRequest implements BaseRequest {
                 jlist.add(tag);
             }
         }
-        jarray.add(jsonArray);
-        jarray.add(history);
+        jobject.put("tags", jsonArray);
+        jobject.put("history", history);
+        jarray.add(jobject);
         return jarray;
     }
 }
