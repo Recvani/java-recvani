@@ -28,7 +28,7 @@ public class SimpleInteraction implements  BaseRequest {
         jsonObject.put("eid", eid);
         jsonObject.put("score", score);
         jsonObject.put("time", time);
-        jarray.add(jarray);
+        jarray.add(jsonObject);
         return jarray;
     }
 }
