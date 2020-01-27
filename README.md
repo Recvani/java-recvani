@@ -128,12 +128,12 @@ We can get the final recommendation for the user. We can filter history and send
 
     import java.util.List;
     import java.util.ArrayList;
-
+    import com.recvani.requests.RecRequest
    
     String USER = "USER1";      // USER ID
     int COUNT = 10;             // Count of Recommended item to fetch
     List<List<String>> TAGS = new ArrayList<>();           // Tags of item, Empty for overall 
-    bool HISTORY = false;       // Will not serve already serverd item.
+    long HISTORY = RecRequest.FULL_HISTORY_FILTER;       // Will not serve already serverd item.
     
     List<String>  result = recVaniManager.getStories(USER, COUNT, TAGS, HISTORY); // Result will be list of items
   
@@ -143,7 +143,7 @@ We can get the final recommendation for the user. We can filter history and send
     tags2.add("ST2");
     List<List<String>> tags = new ArrayList<>();
     tags.add(tags2);
-    List<String>  result = recVaniManager.getStories("USER1", 10, tags, false); // Result will be list of items with tag ST2
+    List<String>  result = recVaniManager.getStories("USER1", 10, tags, HISTORY); // Result will be list of items with tag ST2
 
 #### Complex Queries 
 

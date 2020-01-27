@@ -21,17 +21,17 @@ public class RecVaniManager {
     }
 
     public List<String> getStories(String uid, Integer count) {
-        return getStories(uid, count, new ArrayList<>(), false);
+        return getStories(uid, count, new ArrayList<>(), RecRequest.FULL_HISTORY_FILTER);
     }
 
     public List<String> getStories(String uid, Integer count, List<List<String>> tags) {
-        return getStories(uid, count, tags, false);
+        return getStories(uid, count, tags, RecRequest.FULL_HISTORY_FILTER);
     }
 
-    public List<String> getStories(String uid, Integer count, List<List<String>> tags, boolean history ) {
+    public List<String> getStories(String uid, Integer count, List<List<String>> tags, long historyFilterTime ) {
 
         List<String>result = new ArrayList<>();
-        RecRequest recRequest = new RecRequest(uid, count, tags, history);
+        RecRequest recRequest = new RecRequest(uid, count, tags, historyFilterTime);
         try {
             Object obj  = rvClient.send(recRequest);
             if (obj instanceof JSONArray){

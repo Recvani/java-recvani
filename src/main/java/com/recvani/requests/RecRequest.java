@@ -6,20 +6,23 @@ import org.json.simple.JSONObject;
 import java.util.List;
 
 public class RecRequest implements BaseRequest {
+    
+    public static long NO_HISTORY_FILTER = -1;
+    public static long FULL_HISTORY_FILTER = -100;
     String uid;
     Integer count;
     List<List<String>> tags;
-    boolean history;
+    long historyFilterTime;
 
     public RecRequest(String uid, int count, List<List<String>> tags) {
-        this(uid, count, tags, false);
+        this(uid, count, tags, FULL_HISTORY_FILTER);
     }
 
-    public RecRequest(String uid, int count, List<List<String>> tags, boolean history) {
+    public RecRequest(String uid, int count, List<List<String>> tags, long historyFilterTime) {
         this.uid = uid;
         this.count = count;
         this.tags = tags;
-        this.history = false;
+        this.historyFilterTime = historyFilterTime;
     }
 
     public String getMethod() {
@@ -39,7 +42,7 @@ public class RecRequest implements BaseRequest {
             }
         }
         jobject.put("tags", jsonArray);
-        jobject.put("history", history);
+        jobject.put("history", historyFilterTime);
         jarray.add(jobject);
         return jarray;
     }
